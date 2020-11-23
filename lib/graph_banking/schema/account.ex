@@ -6,6 +6,7 @@ defmodule GraphBanking.Schema.Account do
   @foreign_key_type :binary_id
   schema "accounts" do
     field :balance, :float
+    has_many :transfers, GraphBanking.Schema.Transfer
 
     timestamps()
   end
