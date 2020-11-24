@@ -15,6 +15,7 @@ defmodule GraphBanking.Schema.Account do
   def changeset(account, attrs) do
     account
     |> cast(attrs, [:balance])
+    |> validate_number(:balance, greater_than_or_equal_to: 0)
     |> validate_required([:balance])
   end
 end
