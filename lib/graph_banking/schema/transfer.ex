@@ -7,20 +7,17 @@ defmodule GraphBanking.Schema.Transfer do
   schema "transfers" do
     field :address, :binary_id
     field :amount, :float
-    field :when, :utc_datetime_usec
+    field :when, :utc_datetime_usec, default: DateTime.utc_now()
     belongs_to :account, GraphBanking.Schema.Account,
       references: :uuid,
-      foreign_key: :account_id,
+      foreign_key: :sender,
       type: :binary_id
-
-
-    timestamps()
   end
 
   @doc false
   def changeset(transfer, attrs) do
     transfer
-    |> cast(attrs, [:address, :amount, :when])
-    |> validate_required([:address, :amount, :when])
+    |> cast(attrs, [:sender, :address, :amount])
+    |> validate_required([:sender, :address, :amount])
   end
 end
