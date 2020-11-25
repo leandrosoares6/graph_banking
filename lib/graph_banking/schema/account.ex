@@ -1,7 +1,5 @@
 defmodule GraphBanking.Schema.Account do
-  # use Ecto.Schema
   use GraphBanking.Model
-  # import Ecto.Changeset
   alias GraphBanking.Repo
   alias GraphBanking.Schema.Transfer
 
@@ -24,7 +22,5 @@ defmodule GraphBanking.Schema.Account do
     |> cast(attrs, [:balance])
     |> validate_number(:balance, greater_than_or_equal_to: 0)
     |> validate_required([:balance])
-
-    # |> foreign_key_constraint(:transfers_sender_fkey)
   end
 end
