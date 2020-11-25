@@ -26,11 +26,22 @@ defmodule GraphBankingWeb.Resolvers.AccountResolver do
 
   defp extract_error_msg(changeset) do
     changeset.errors
-    |> Enum.map(fn {field, {error, _details}} ->
+    |> Enum.map(fn {field, detail} ->
       [
         field: field,
-        message: String.capitalize(error)
+        message: render_detail(detail)
       ]
     end)
+  end
+
+  def render_detail({message, values}) do
+    Enum.reduce(values, message, fn {k, v}, acc ->
+      String.replace(acc, "%{#{k}}", to_string(v))
+      |> String.capitalize()
+    end)
+  end
+
+  def render_detail(message) do
+    message
   end
 end
