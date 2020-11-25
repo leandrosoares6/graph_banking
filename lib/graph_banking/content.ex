@@ -7,6 +7,11 @@ defmodule GraphBanking.Content do
     Repo.all(Account)
   end
 
+  def find_account(uuid) do
+    Repo.get!(Account, uuid)
+    |> Repo.preload(:transfers)
+  end
+
   def create_account(attrs, _info) do
     %Account{}
     |> Account.changeset(attrs)
