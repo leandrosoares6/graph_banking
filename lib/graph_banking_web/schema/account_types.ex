@@ -24,7 +24,7 @@ defmodule GraphBankingWeb.Schema.AccountTypes do
   object :account_mutations do
     @desc "Open a account"
     field :open_account, type: :account do
-      arg :balance, non_null(:float)
+      arg(:balance, non_null(:float))
       resolve(&Resolvers.AccountResolver.create/3)
     end
   end

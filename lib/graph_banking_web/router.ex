@@ -11,7 +11,7 @@ defmodule GraphBankingWeb.Router do
 
   forward "/graphiql", Absinthe.Plug.GraphiQL, schema: GraphBankingWeb.Schema
   forward "/", Absinthe.Plug, schema: GraphBankingWeb.Schema
-  
+
   # if Mix.env() in [:dev, :test] do
   #   import Phoenix.LiveDashboard.Router
 

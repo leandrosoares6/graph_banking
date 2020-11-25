@@ -17,7 +17,7 @@ defmodule GraphBanking.Content do
     |> Account.changeset(attrs)
     |> Repo.insert()
   end
-  
+
   def transfer_money(attrs, _info) do
     %Transfer{}
     |> Transfer.changeset(attrs)

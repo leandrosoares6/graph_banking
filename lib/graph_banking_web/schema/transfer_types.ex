@@ -25,10 +25,10 @@ defmodule GraphBankingWeb.Schema.TransferTypes do
   object :transfer_mutations do
     @desc "Transfer money between accounts"
     field :transfer_money, type: :transfer do
-      arg :sender, non_null(:string)
-      arg :address, non_null(:string)
-      arg :amount, non_null(:float)
-      resolve &Resolvers.TransferResolver.create/3
+      arg(:sender, non_null(:string))
+      arg(:address, non_null(:string))
+      arg(:amount, non_null(:float))
+      resolve(&Resolvers.TransferResolver.create/3)
     end
   end
 end
