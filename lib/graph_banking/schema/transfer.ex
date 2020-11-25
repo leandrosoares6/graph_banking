@@ -1,4 +1,8 @@
 defmodule GraphBanking.Schema.Transfer do
+  @moduledoc """
+  Extends functions from models for Transfer schema
+  """
+
   use GraphBanking.Model
   alias GraphBanking.Repo
   alias GraphBanking.Schema.Account
@@ -14,10 +18,6 @@ defmodule GraphBanking.Schema.Transfer do
       references: :uuid,
       foreign_key: :sender,
       type: :binary_id
-  end
-
-  def all do
-    Repo.all(from row in __MODULE__, order_by: [desc: row.uuid])
   end
 
   @doc false

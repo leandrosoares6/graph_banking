@@ -1,4 +1,8 @@
 defmodule GraphBankingWeb.Telemetry do
+  @moduledoc """
+  Provides default framework functions
+  """
+
   use Supervisor
   import Telemetry.Metrics
 

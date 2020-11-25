@@ -1,4 +1,8 @@
 defmodule GraphBankingWeb.Schema.AccountTypes do
+  @moduledoc """
+  Provides a objects, mutations and subscriptions related
+  """
+
   use Absinthe.Schema.Notation
 
   import Absinthe.Resolution.Helpers, only: [dataloader: 3]
@@ -18,6 +22,12 @@ defmodule GraphBankingWeb.Schema.AccountTypes do
     @desc "Get all accounts"
     field :accounts, list_of(:account) do
       resolve(&Resolvers.AccountResolver.list/3)
+    end
+
+    @desc "Get a specific account"
+    field :account, :account do
+      arg(:uuid, non_null(:string))
+      resolve(&Resolvers.AccountResolver.show/3)
     end
   end
 

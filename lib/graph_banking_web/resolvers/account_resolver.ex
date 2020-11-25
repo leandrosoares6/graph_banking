@@ -1,4 +1,8 @@
 defmodule GraphBankingWeb.Resolvers.AccountResolver do
+  @moduledoc """
+  Provides a resolver functions to manager Accounts
+  """
+
   alias GraphBanking.Schema.Account
 
   def list(_parent, _args, _resolutions) do

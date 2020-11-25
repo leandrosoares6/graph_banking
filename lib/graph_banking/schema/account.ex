@@ -1,4 +1,8 @@
 defmodule GraphBanking.Schema.Account do
+  @moduledoc """
+  Extends functions from models for Account schema
+  """
+
   use GraphBanking.Model
   alias GraphBanking.Repo
   alias GraphBanking.Schema.Transfer

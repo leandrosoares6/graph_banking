@@ -1,4 +1,8 @@
 defmodule GraphBankingWeb.Schema.TransferTypes do
+  @moduledoc """
+  Provides a objects, mutations and subscriptions related
+  """
+
   use Absinthe.Schema.Notation
 
   import Absinthe.Resolution.Helpers, only: [dataloader: 1]

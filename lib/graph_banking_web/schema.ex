@@ -1,4 +1,8 @@
 defmodule GraphBankingWeb.Schema do
+  @moduledoc """
+  Import schema types and define all queries and mutations
+  """
+
   use Absinthe.Schema
 
   alias GraphBankingWeb.Data

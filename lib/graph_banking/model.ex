@@ -1,4 +1,8 @@
 defmodule GraphBanking.Model do
+  @moduledoc """
+  Provides functions to extend persist and get schemas from database
+  """
+
   alias GraphBanking.Repo
 
   defmacro __using__(_) do
@@ -7,8 +11,8 @@ defmodule GraphBanking.Model do
       import Ecto.Changeset
       import Ecto.Query
 
-      def find(id) do
-        Repo.get(__MODULE__, id)
+      def find(uuid) do
+        Repo.get(__MODULE__, uuid)
       end
 
       def find_by(conds) do

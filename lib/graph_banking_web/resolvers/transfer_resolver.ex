@@ -1,4 +1,8 @@
 defmodule GraphBankingWeb.Resolvers.TransferResolver do
+  @moduledoc """
+  Provides a resolver functions to manager Transfers
+  """
+
   alias GraphBanking.Repo
   alias GraphBanking.Schema.{Account, Transfer}
 

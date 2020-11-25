@@ -1,4 +1,8 @@
 defmodule GraphBankingWeb.Data do
+  @moduledoc """
+  Provides query params to fetch data from database
+  """
+
   import Ecto.Query
 
   def data() do
