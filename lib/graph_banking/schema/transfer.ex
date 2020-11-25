@@ -25,7 +25,7 @@ defmodule GraphBanking.Schema.Transfer do
     transfer
     |> cast(attrs, [:sender, :address, :amount])
     |> validate_required([:sender, :address, :amount])
-    |> validate_number(:sender, not_equal_to: :address)
+    |> validate_number(:amount, greater_than: 0)
     |> foreign_key_constraint(:sender)
     |> sender_address_must_be_dif
   end
