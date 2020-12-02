@@ -4,7 +4,6 @@ defmodule GraphBanking.Schema.Transfer do
   """
 
   use GraphBanking.Model
-  alias GraphBanking.Repo
   alias GraphBanking.Schema.Account
 
   @primary_key {:uuid, :binary_id, autogenerate: true}
