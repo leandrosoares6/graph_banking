@@ -8,8 +8,8 @@ defmodule GraphBankingWeb.Schema do
   alias GraphBankingWeb.Data
 
   import_types(Absinthe.Type.Custom)
-  import_types(GraphBankingWeb.Schema.AccountTypes)
-  import_types(GraphBankingWeb.Schema.TransferTypes)
+  import_types(GraphBankingWeb.Types.Account)
+  import_types(GraphBankingWeb.Types.Transfer)
 
   query do
     import_fields(:account_queries)
