@@ -6,29 +6,27 @@ defmodule GraphBanking.Application do
   use Application
 
   def start(_type, _args) do
-    children = [
-      # Start the Ecto repository
-      GraphBanking.Repo,
-      # Start the Telemetry supervisor
-      GraphBankingWeb.Telemetry,
-      # Start the PubSub system
-      {Phoenix.PubSub, name: GraphBanking.PubSub},
-      # Start the Endpoint (http/https)
-      GraphBankingWeb.Endpoint
-      # Start a worker by calling: GraphBanking.Worker.start_link(arg)
-      # {GraphBanking.Worker, arg}
-    ]
-
-    # See https://hexdocs.pm/elixir/Supervisor.html
-    # for other strategies and supported options
     opts = [strategy: :one_for_one, name: GraphBanking.Supervisor]
-    Supervisor.start_link(children, opts)
+    Supervisor.start_link(get_children(), opts)
   end
 
-  # Tell Phoenix to update the endpoint configuration
-  # whenever the application is updated.
   def config_change(changed, _new, removed) do
     GraphBankingWeb.Endpoint.config_change(changed, removed)
     :ok
+  end
+
+  defp get_children do
+    case Mix.env() do
+      :test ->
+        []
+
+      _ ->
+        [
+          GraphBanking.Repo,
+          GraphBankingWeb.Telemetry,
+          {Phoenix.PubSub, name: GraphBanking.PubSub},
+          GraphBankingWeb.Endpoint
+        ]
+    end
   end
 end
