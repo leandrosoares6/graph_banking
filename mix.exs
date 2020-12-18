@@ -46,7 +46,8 @@ defmodule GraphBanking.MixProject do
       {:absinthe, "~> 1.5"},
       {:absinthe_plug, "~> 1.5"},
       {:dataloader, "~> 1.0"},
-      {:credo, "~> 1.5"}
+      {:credo, "~> 1.5"},
+      {:uuid, "~> 1.1"}
     ]
   end
 
