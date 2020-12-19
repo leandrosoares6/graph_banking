@@ -13,7 +13,6 @@ defmodule GraphBankingWeb.Schema do
 
   query do
     import_fields(:account_queries)
-    import_fields(:transfer_queries)
   end
 
   mutation do

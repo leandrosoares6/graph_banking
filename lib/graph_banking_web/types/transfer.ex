@@ -18,14 +18,6 @@ defmodule GraphBankingWeb.Types.Transfer do
     field :when, :string
   end
 
-  object :transfer_queries do
-    @desc "Get all transfers for a specific account"
-    field :account_transfers, list_of(:transfer) do
-      arg(:sender, non_null(:string))
-      resolve(&Resolvers.Transfer.list/3)
-    end
-  end
-
   object :transfer_mutations do
     @desc "Transfer money between accounts"
     field :transfer_money, type: :transfer do

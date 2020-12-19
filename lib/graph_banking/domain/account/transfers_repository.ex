@@ -60,15 +60,6 @@ defmodule GraphBanking.Repository.Transfers do
     end
   end
 
-  def list(account_id) do
-    account =
-      account_id
-      |> Repo.get(GraphBanking.Persistence.Account, account_id)
-      |> Repo.preload(:transfers)
-
-    {:ok, account.transfers}
-  end
-
   defp to_persistence_model(domain_model) do
     %GraphBanking.Persistence.Transfer{
       uuid: domain_model.uuid,
