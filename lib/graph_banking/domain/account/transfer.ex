@@ -1,6 +1,6 @@
 defmodule GraphBanking.Model.Transfer do
   @moduledoc false
-
+  @enforce_keys [:sender, :address, :amount]
   defstruct uuid: nil,
             sender: nil,
             address: nil,

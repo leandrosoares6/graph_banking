@@ -1,6 +1,7 @@
 defmodule GraphBanking.Model.Account do
   @moduledoc false
 
+  @enforce_keys [:balance]
   defstruct uuid: nil,
             balance: nil
 

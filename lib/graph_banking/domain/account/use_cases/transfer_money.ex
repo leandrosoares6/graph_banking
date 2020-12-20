@@ -18,11 +18,6 @@ defmodule GraphBanking.Account.UseCases.TransferMoney do
     address = transfer_model.address |> Accounts.get()
     transfer = transfer_model |> Transfers.cast_to_schema()
 
-    # cond do
-    #   sender == nil -> {:error, "Sender not found."}
-    #   address == nil -> {:error, "Address not found."}
-    # end
-
     case sender do
       nil ->
         {:error, "Sender not found."}
