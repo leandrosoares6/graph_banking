@@ -1,9 +1,14 @@
 defmodule GraphBanking.Repository.Accounts do
   @moduledoc false
+
   alias GraphBanking.Repo
   alias GraphBanking.Model.Account
+  alias GraphBanking.Repository.BAccountsRepository
   import Ecto.Query
 
+  @behaviour BAccountsRepository
+
+  @impl BAccountsRepository
   def create(balance) do
     insert = balance |> Account.create()
 
@@ -22,6 +27,7 @@ defmodule GraphBanking.Repository.Accounts do
     end
   end
 
+  @impl BAccountsRepository
   def get(uuid) do
     query =
       from(a in GraphBanking.Persistence.Account,
