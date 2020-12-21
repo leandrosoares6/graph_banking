@@ -1,14 +1,14 @@
 defmodule GraphBanking.Repository.Transfers do
   @moduledoc false
   alias GraphBanking.Repo
+  alias GraphBanking.Model.Account
   alias GraphBanking.Model.Transfer
-  alias GraphBanking.Repository.Accounts
   import Ecto.Changeset, only: [change: 2]
 
   def create(sender, address, transfer) do
     amount = transfer.amount
-    sender_balance = Accounts.debit(sender, amount)
-    address_balance = Accounts.credit(address, amount)
+    sender_balance = Account.debit(sender, amount)
+    address_balance = Account.credit(address, amount)
 
     sender_changeset =
       sender
@@ -38,17 +38,6 @@ defmodule GraphBanking.Repository.Transfers do
 
   def cast_to_schema(transfer_model) do
     transfer_model
-    |> to_persistence_model()
-
-  end
-
-  defp to_persistence_model(domain_model) do
-    %GraphBanking.Persistence.Transfer{
-      uuid: domain_model.uuid,
-      sender: domain_model.sender,
-      address: domain_model.address,
-      amount: domain_model.amount,
-      when: domain_model.when
-    }
+    |> GraphBanking.Persistence.Transfer.to_persistence_model()
   end
 end
