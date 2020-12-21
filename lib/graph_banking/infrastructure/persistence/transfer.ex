@@ -16,4 +16,14 @@ defmodule GraphBanking.Persistence.Transfer do
       foreign_key: :sender,
       type: :string
   end
+
+  def to_persistence_model(domain_model) do
+    %__MODULE__{
+      uuid: domain_model.uuid,
+      sender: domain_model.sender,
+      address: domain_model.address,
+      amount: domain_model.amount,
+      when: domain_model.when
+    }
+  end
 end

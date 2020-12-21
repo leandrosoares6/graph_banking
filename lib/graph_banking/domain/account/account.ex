@@ -18,7 +18,9 @@ defmodule GraphBanking.Model.Account do
 
   def create(_), do: {:error, "Invalid params to create Account."}
 
-  def debit(account, amount) do
+  def debit(account_schema, amount) do
+    account = account_schema |> to_domain_model()
+
     case amount > account.balance do
       true ->
         {:error, "There is not enough balance to perform this operation."}
@@ -29,8 +31,17 @@ defmodule GraphBanking.Model.Account do
     end
   end
 
-  def credit(account, amount) do
+  def credit(account_schema, amount) do
+    account = account_schema |> to_domain_model()
+
     %__MODULE__{account | balance: account.balance + amount}
     |> Map.get(:balance)
+  end
+
+  def to_domain_model(persistence_model) do
+    %__MODULE__{
+      uuid: persistence_model.uuid,
+      balance: persistence_model.balance
+    }
   end
 end
