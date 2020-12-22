@@ -1,9 +1,10 @@
-defmodule GraphBanking.Repository.Accounts do
+defmodule GraphBanking.Domain.Account.Infrastructure.Persistence.AccountsRepository do
   @moduledoc false
 
   alias GraphBanking.Repo
-  alias GraphBanking.Model.Account
-  alias GraphBanking.Repository.BAccountsRepository
+  alias GraphBanking.Domain.Account.Entities.Account
+  alias GraphBanking.Domain.Account.Repositories.BAccountsRepository
+  alias GraphBanking.Domain.Account.Infrastructure.Persistence.Account, as: AccountSchema
   import Ecto.Query
 
   @behaviour BAccountsRepository
@@ -18,7 +19,7 @@ defmodule GraphBanking.Repository.Accounts do
 
       model_account ->
         model_account
-        |> GraphBanking.Persistence.Account.to_persistence_model()
+        |> AccountSchema.to_persistence_model()
         |> Repo.insert()
         |> case do
           {:error, change} -> {:error, change.message}
@@ -30,7 +31,7 @@ defmodule GraphBanking.Repository.Accounts do
   @impl BAccountsRepository
   def get(uuid) do
     query =
-      from(a in GraphBanking.Persistence.Account,
+      from(a in AccountSchema,
         where: a.uuid == ^uuid
       )
 

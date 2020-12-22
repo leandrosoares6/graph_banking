@@ -1,4 +1,4 @@
-defmodule GraphBanking.Model.Account do
+defmodule GraphBanking.Domain.Account.Entities.Account do
   @moduledoc false
 
   @enforce_keys [:balance]

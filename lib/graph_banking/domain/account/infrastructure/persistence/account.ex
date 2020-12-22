@@ -1,8 +1,8 @@
-defmodule GraphBanking.Persistence.Account do
+defmodule GraphBanking.Domain.Account.Infrastructure.Persistence.Account do
   @moduledoc false
 
   use Ecto.Schema
-  alias GraphBanking.Persistence.Transfer
+  alias GraphBanking.Domain.Account.Infrastructure.Persistence.Transfer
 
   @primary_key {:uuid, :string, autogenerate: false}
   @foreign_key_type :string

@@ -1,4 +1,4 @@
-defmodule GraphBanking.Persistence.Transfer do
+defmodule GraphBanking.Domain.Account.Infrastructure.Persistence.Transfer do
   @moduledoc false
 
   use Ecto.Schema

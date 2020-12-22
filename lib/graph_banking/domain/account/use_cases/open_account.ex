@@ -1,7 +1,7 @@
-defmodule GraphBanking.Account.UseCases.OpenAccount do
+defmodule GraphBanking.Domain.Account.UseCases.OpenAccount do
   @moduledoc false
 
-  alias GraphBanking.Repository.Accounts
+  alias GraphBanking.Domain.Account.Infrastructure.Persistence.AccountsRepository, as: Accounts
 
   def apply(args) do
     case args |> Accounts.create() do

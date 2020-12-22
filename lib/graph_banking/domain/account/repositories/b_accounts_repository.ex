@@ -1,8 +1,8 @@
-defmodule GraphBanking.Repository.BAccountsRepository do
+defmodule GraphBanking.Domain.Account.Repositories.BAccountsRepository do
   @moduledoc false
-  alias GraphBanking.Model.Account
-  alias GraphBanking.Persistence.Account, as: AccountSchema
-  alias GraphBanking.Repository.Accounts
+  alias GraphBanking.Domain.Account.Entities.Account
+  alias GraphBanking.Domain.Account.Infrastructure.Persistence.Account, as: AccountSchema
+  alias GraphBanking.Domain.Account.Infrastructure.Persistence.AccountsRepository, as: Accounts
 
   @callback create(balance :: float) :: %Account{} | {:error, String.t()}
   @callback get(uuid :: String.t()) :: %AccountSchema{} | nil

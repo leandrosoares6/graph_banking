@@ -1,4 +1,4 @@
-defmodule GraphBanking.Model.Transfer do
+defmodule GraphBanking.Domain.Account.Entities.Transfer do
   @moduledoc false
   @enforce_keys [:sender, :address, :amount]
   defstruct uuid: nil,
