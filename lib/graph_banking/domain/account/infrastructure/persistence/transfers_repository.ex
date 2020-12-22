@@ -2,10 +2,12 @@ defmodule GraphBanking.Domain.Account.Infrastructure.Persistence.TransfersReposi
   @moduledoc false
   alias GraphBanking.Repo
   alias GraphBanking.Domain.Account.Entities.Account
-  alias GraphBanking.Domain.Account.Entities.Transfer
-  alias GraphBanking.Domain.Account.Infrastructure.Persistence.Transfer, as: TransferSchema
+  alias GraphBanking.Domain.Account.Repositories.BTransfersRepository
   import Ecto.Changeset, only: [change: 2]
 
+  @behaviour BTransfersRepository
+
+  @impl BTransfersRepository
   def create(sender, address, transfer) do
     amount = transfer.amount
     sender_balance = Account.debit(sender, amount)
@@ -30,15 +32,5 @@ defmodule GraphBanking.Domain.Account.Infrastructure.Persistence.TransfersReposi
           Repo.insert!(transfer)
         end)
     end
-  end
-
-  def cast_to_model(args) do
-    args
-    |> Transfer.create()
-  end
-
-  def cast_to_schema(transfer_model) do
-    transfer_model
-    |> TransferSchema.to_persistence_model()
   end
 end

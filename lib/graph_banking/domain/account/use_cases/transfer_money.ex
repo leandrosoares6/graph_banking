@@ -1,8 +1,8 @@
 defmodule GraphBanking.Domain.Account.UseCases.TransferMoney do
   @moduledoc false
 
-  alias GraphBanking.Domain.Account.Infrastructure.Persistence.AccountsRepository, as: Accounts
-  alias GraphBanking.Domain.Account.Infrastructure.Persistence.TransfersRepository, as: Transfers
+  alias GraphBanking.Domain.Account.Repositories.BAccountsRepository, as: Accounts
+  alias GraphBanking.Domain.Account.Repositories.BTransfersRepository, as: Transfers
 
   def apply(args) do
     transfer_model = args |> Transfers.cast_to_model()
